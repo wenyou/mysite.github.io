@@ -10,13 +10,13 @@
  * 公众号配置项
  */
 //公共号TOKEN
-define("TOKEN", "you_wen_zhang_shushan_hefei");
+define("TOKEN", "my_pm_key");
 //公共号APP ID
-define("APPID", "wxc0644e50d59425ac");
+define("APPID", "myappid");
 //开发者密码(AppSecret)
-define("APPSECRET", "fc9073e8e3b889d652338425bcf720e2");
+define("APPSECRET", "myappsecret");
 //消息加解密密钥(EncodingAESKey)
-define("ENAESKEY", "VH2SRfG5eN5DD00yKyQwdaru4VnqkQet5s1B2Vr72qa");
+define("ENAESKEY", "myEncodingAESKey");
 
 /**
  * 应用程序定义
@@ -28,11 +28,11 @@ define("APP_URL", "http://www.hahafamily.com/wx/");
 define("STIME", time());
 //数据库配置
 //mysql database address
-define('DB_HOST','bdm27424655.my3w.com');
+define('DB_HOST','mysql.host.my.com');
 //mysql database user
-define('DB_USER','bdm27424655');
+define('DB_USER','root');
 //database password
-define('DB_PASSWD','20H20haYan06zhW03');
+define('DB_PASSWD','123456');
 //database name
 define('DB_NAME','bdm27424655_db');
 //mysql connent type

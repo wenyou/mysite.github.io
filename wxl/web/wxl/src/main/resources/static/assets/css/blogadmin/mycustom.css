@@ -1,0 +1,42 @@
+/*自定义*/
+/*@media (min-width: 600px) {
+    .login-page .col-lg-6 {
+        width: 50%;
+    }
+}*/
+@media (min-width: 800px) {
+    .login-page .container {
+        width: 800px;
+    }
+}
+.login-page .logo h1{margin-top: 60px; text-align: center;}
+.login-page .text-red{padding-bottom: 10px;}
+.login-page .is-invalid{color: #ff7676; padding-top: 5px;}
+.login-page .label-material,.login-page .btn{font-size: 14px;}
+.login-page .btn{font-size: 14px; width: 100px;}
+.login-page .form-holder .form .form-group{margin-top:10px;margin-bottom:50px;}
+footer.main-footer {
+    padding:10px 10px;
+}
+.article-tables{padding:0;}
+.article-tables .card-body {
+    padding:0.5rem;
+}
+.article-tables .card-header {
+    padding: 0.5rem 1.25rem;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+.table-thead-bg th{background-color:#EEF5F9;}
+.article-form .form-control-label{text-align: right; margin:10px 0 0 0;}
+.article-form .form-horizontal{padding-top: 10px;}
+.article-form .form-group{margin-bottom:0.3rem;}
+.form-group-search{margin-right:15px;}
+.article-form .line{margin: 5px 0 12px 0;}
+.error{color: #ff0000;}
+.article-form .error{color: #ff0000; padding:3px auto 0 auto;margin-bottom:0.2rem;}
+.form-inline .form-group-search .width50{width:50px;}
+.form-search-marign .form-group{margin-top:10px;}
+.form-search-marign{margin-top:-10px;}
+.imgh4{font-size: 14px; text-align: center; padding:0;margin-bottom:0.5rem;}
+.btn-small{font-size:12px; padding: 0;}

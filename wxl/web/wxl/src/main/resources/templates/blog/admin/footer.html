@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="commonFooter">
+    <footer class="main-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Copyright © 2020. <span th:text="${blogConfig.domainName}"></span>  </p>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <p>All rights reserved.
+                        <a href="http://stkit.cn/" target="_blank" th:text="${blogConfig.recordNumber}">
+                        皖ICP备17010158号-2</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

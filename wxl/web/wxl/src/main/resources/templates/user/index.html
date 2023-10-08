@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:replace="header::header-fragment"></header>
+<body ontouchstart>
+<link rel="stylesheet" th:href="@{/assets/css/style.css}" href="/assets/css/style.css" />
+<link rel="stylesheet" th:href="@{/assets/css/weuix.css}" href="/assets/css/weuix.css" />
+<div class="page">
+    <div class="weui-flex head-con">
+        <div class="weui-flex__item weui-flex__item_left"><div class="placeholder"><a href="#"><span class="icon icon-109"></span></a></div></div>
+        <div class="weui-flex__item"><div class="placeholder">个人中心</div></div>
+        <div class="weui-flex__item weui-flex__item_right"><div class="placeholder"><a href="#"><span class="icon icon-40"></span></a></div></div>
+    </div>
+
+    <div style="height:48px;"></div>
+
+    <div class="mine-top">
+        <div class="weui-avatar-circle">
+            <img src="/assets/images/user.png" th:src="${weChatUser.headimgurl}">
+        </div>
+        <p th:text="${user.nickName}">昵称</p>
+    </div>
+
+    <div class="weui-grids"  >
+        <a href="/wxl/uc/order" class="weui-grid js_grid" >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_msg.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                我的订单
+            </p>
+        </a>
+        <a href="/wxl/uc/wallet" class="weui-grid js_grid"  >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_button.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                我的钱包
+            </p>
+        </a>
+        <a href="/wxl/cart" class="weui-grid js_grid" >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_article.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                我的购物车
+            </p>
+        </a>
+        <a href="/wxl/psychotherapist" class="weui-grid js_grid" >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_cell.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                找咨询师
+            </p>
+        </a>
+        <a href="javascript:;" class="weui-grid js_grid" >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_toast.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                客服小蜜
+            </p>
+        </a>
+        <a href="/wxl/feedback/my" class="weui-grid js_grid" >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_dialog.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                我的反馈
+            </p>
+        </a>
+        <a href="/wxl/about" class="weui-grid js_grid" >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_tab.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                关于我们
+            </p>
+        </a>
+        <a href="/wxl/contact" class="weui-grid js_grid" >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_tab.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                联系我们
+            </p>
+        </a>
+        <a href="/wxl/uc/logout" class="weui-grid js_grid" >
+            <div class="weui-grid__icon">
+                <img src="images/icon/icon_nav_tab.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                退出登录
+            </p>
+        </a>
+    </div>
+    <!-- 导航 -->
+    <div class="page__bd" style="height: 100%;">
+        <div class="weui-tab">
+            <div class="weui-tab__panel">
+
+            </div>
+            <div class="weui-tabbar">
+                <div class="weui-tabbar__item">
+                    <div style="display: inline-block; position: relative;">
+                        <i class="icon icon-27 f27 weui-tabbar__icon"></i>
+                    </div>
+                    <p class="weui-tabbar__label">首页</p>
+                </div>
+                <div class="weui-tabbar__item">
+                    <i class="icon icon-4 f27 weui-tabbar__icon" ></i>
+                    <p class="weui-tabbar__label">找咨询师</p>
+                </div>
+                <div class="weui-tabbar__item">
+                    <div style="display: inline-block; position: relative;">
+                        <i class="icon icon-91 f27 weui-tabbar__icon" ></i>
+                    </div>
+                    <p class="weui-tabbar__label">我是专家</p>
+                </div>
+                <div class="weui-tabbar__item weui-bar__item_on">
+                    <i class="icon icon-30 f27 weui-tabbar__icon" ></i>
+                    <p class="weui-tabbar__label">我</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer th:replace="footer::footer-fragment"></footer>
+</body>
+</html>

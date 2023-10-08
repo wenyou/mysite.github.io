@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/admin/header::commonHeader"></head>
+<body>
+<div class="page">
+    <div th:include="blog/admin/mainnavbar::MainNavbar"></div>
+
+    <div class="page-content d-flex align-items-stretch">
+        <div th:include="blog/admin/navigation::navigation"></div>
+
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header">
+                <div class="container-fluid">
+                    <h2 class="no-margin-bottom">消息详情页</h2>
+                </div>
+            </header>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/blogAdmin/index}">首页</a></li>
+                    <li class="breadcrumb-item active">消息详情页</li>
+                </ul>
+            </div>
+            <!-- Forms Section-->
+            <section class="forms article-tables article-form">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Form Elements -->
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h3 class="h4" th:text="${message.subject}">留言详情</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form-horizontal" id="message_form">
+                                        <div hidden="true">
+                                            <input type="text" class="form-control" th:value="${loginUserId}" id="loginUserId" />
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">留言人名称</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" disabled="" placeholder="" th:value="${message.name}" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">留言人邮箱</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" disabled="" placeholder="" th:value="${message.email}" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">留言时间</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" disabled="" placeholder="" th:value="${message.messageInputDate}" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">主题</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" disabled="" placeholder="" th:value="${message.subject}" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row has-success">
+                                            <label class="col-sm-3 form-control-label">消息(留言)内容</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" disabled th:text="${message.messageContent}" rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row has-success">
+                                            <label class="col-sm-3 form-control-label">回复内容</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" id="replyContent" name="replyContent" th:text="${message.replyContent}" rows="10" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4 offset-sm-3">
+                                                <input type="button" class="btn btn-secondary" onclick="back()" value="返回列表页" style="margin-right: 30px;" />
+                                                <input type="button" class="btn btn-primary" onclick="saveReply()" value="回复留言" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div th:include="blog/admin/footer::commonFooter"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="blog/admin/onloadjs::onLoadJs"></div>
+<script type="text/javascript">
+var messageId = [[${message.messageId}]];
+function back() {
+    window.open(getRootPath_dc()+"blogAdmin/message/list","_href");
+}
+function saveReply(){
+    if(!$('#message_form').valid()){
+        return false;
+    }
+    var url = getRootPath_dc() + "blogAdmin/message/saveOrUpdateReply";
+    var replyContent = $('#replyContent').val();
+    var loginUserId = $('#loginUserId').val();
+
+    if(messageId == 0 || messageId == ""){
+        return false;
+    }
+    $.ajax({
+        type : "POST",
+        url : url,
+        dataType : "text",
+        contentType: "application/json;charset=UTF-8",
+        data : JSON.stringify({
+            "messageId":messageId,
+            "replyContent": replyContent,
+            "loginUserId":loginUserId
+        }),
+        success: function (data) {
+            //转义JSON为对象
+            var json = $.parseJSON(data);
+            if (json.status == 200) {
+                alert(json.message);
+                setTimeout(function () {
+                    window.location = json.data;
+                }, 2000);
+            } else {
+                alert("操作失败:" + json.message);
+            }
+        },
+        error:function(){
+            alert("系统出错！");
+        }
+    });
+}
+</script>
+</body>
+</html>

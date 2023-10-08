@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.stkit.wxl.persistence.mapper.WeChatUserMpper">
+    <resultMap id="weChatUser" type="cn.stkit.wxl.model.WeChatUser">
+        <result property="openid" jdbcType="VARCHAR" column="open_id"/>
+        <result property="nickname" jdbcType="VARCHAR" column="nickname"/>
+        <result property="sex" jdbcType="TINYINT" column="sex"/>
+        <result property="province" jdbcType="VARCHAR" column="province"/>
+        <result property="city" jdbcType="VARCHAR" column="city"/>
+        <result property="country" jdbcType="VARCHAR" column="country"/>
+        <result property="headimgurl" jdbcType="VARCHAR" column="headimgurl"/>
+        <result property="userId" jdbcType="INTEGER" column="user_id"/>
+        <result property="createdTime" jdbcType="INTEGER" column="created_time"/>
+        <result property="createdUserId" jdbcType="INTEGER" column="created_user_id"/>
+        <result property="updatedTime" jdbcType="INTEGER" column="updated_time"/>
+        <result property="updatedUserId" jdbcType="INTEGER" column="updated_user_id"/>
+    </resultMap>
+    <parameterMap id="weChatUser" type="cn.stkit.wxl.model.WeChatUser"/>
+
+    <select id="findWeChatUserByOpenid" parameterType="String" resultMap="weChatUser">
+        SELECT * FROM wechat_user WHERE open_id = #{1} LIMIT 1
+    </select>
+
+    <insert id="addWebChatUser" parameterType="weChatUser">
+        INSERT INTO wechat_user (open_id,nickname,sex,province,city,country,headimgurl,user_id,created_time,created_user_id)
+        VALUES (#{openid},#{nickname},#{sex},#{province},#{city},#{country},#{headimgurl},#{userId},#{createdTime},#{createdUserId})
+    </insert>
+
+    <update id="updateWebChatUser" parameterMap="weChatUser">
+        UPDATE wechat_user SET nickname= #{nickname}, sex = #{sex}, province = #{province},city = #{city},country = #{country},headimgurl = ${headimgurl}, updated_time = #{updatedTime}, updated_user_id = #{updatedUserId} WHERE open_id = #{openid} LIMIT 1
+    </update>
+</mapper>

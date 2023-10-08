@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/admin/header::commonHeader"></head>
+<body>
+<div class="page">
+    <div th:include="blog/admin/mainnavbar::MainNavbar"></div>
+
+    <div class="page-content d-flex align-items-stretch">
+        <div th:include="blog/admin/navigation::navigation"></div>
+
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header">
+                <div class="container-fluid">
+                    <h2 class="no-margin-bottom">文章列表页</h2>
+                </div>
+            </header>
+
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/blogAdmin/index}">首页</a></li>
+                    <li class="breadcrumb-item active">文章列表页</li>
+                </ul>
+            </div>
+
+            <!--content list-->
+            <section class="tables article-tables">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+
+                                <div class="card-header d-flex align-items-center">
+                                    <div class="card-body">
+                                        <form class="form-inline">
+                                            <div class="form-group form-group-search">
+                                                文章ID：
+                                                <input id="articleId" type="text" th:value="${articleId}" class="mr-1 form-control width50">
+                                            </div>
+                                            <div class="form-group form-group-search">
+                                                文章名称：
+                                                <input id="articleName" type="text" th:value="${articleName}" class="mr-3 form-control">
+                                            </div>
+                                            <div class="form-group form-group-search">
+                                                作者：
+                                                <input id="articleAuthors" type="text" th:value="${articleAuthors}" class="mr-3 form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="button" class="btn btn-primary" onclick="javascript:search();" value="查询" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="table-thead-bg">
+                                                <tr>
+                                                    <th>文章ID</th>
+                                                    <th>文章名称</th>
+                                                    <th>作者</th>
+                                                    <th>是否置顶</th>
+                                                    <th>创建时间</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="al,iterStat : ${articleList}">
+                                                    <th scope="row" th:text="${al.articleId}"></th>
+                                                    <td th:text="${al.articleName}"></td>
+                                                    <td th:text="${al.articleAuthors}"></td>
+                                                    <td>
+                                                        <span th:if="${al.top == 1}">是</span>
+                                                        <span th:if="${al.top == 0}">否</span>
+                                                    </td>
+                                                    <td th:text="${al.articleInputDate}"></td>
+                                                    <td>
+                                                        <a th:onclick="'javascript:view('+${al.articleId}+');'" href="#" class="edit">
+                                                            <i class="fa fa-eye"></i>预览
+                                                        </a>
+                                                        <a th:onclick="'javascript:edit('+${al.articleId}+');'" href="#" class="edit">
+                                                            <i class="fa fa-gear"></i>修改
+                                                        </a>
+                                                        <span th:if="${al.enabled == 0}">
+                                                            <a th:onclick="'javascript:pulishArticle('+${al.articleId}+');'" href="#" class="edit">
+                                                                <i class="fa fa-check"></i>启用
+                                                            </a>
+                                                             <a th:onclick="'javascript:delArticle('+${al.articleId}+');'" href="#" class="edit">
+                                                                <i class="fa fa-trash"></i>删除
+                                                            </a>
+                                                        </span>
+                                                        <span th:if="${al.enabled == 1}">
+                                                            <a th:onclick="'javascript:cancleArticle('+${al.articleId}+');'" href="#" class="edit">
+                                                                <i class="fa fa-remove"></i>禁用
+                                                            </a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div>
+                                        <ul class="pages" maxshowpageitem="5" pagelistcount="10" id="page">
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div th:include="blog/admin/footer::commonFooter"></div>
+        </div>
+
+    </div>
+</div>
+<div th:replace="blog/admin/onloadjs::onLoadJs"></div>
+<script type="text/javascript"  th:inline="javascript">
+    var totalCount =  [[${totalCount}]];
+    var pageNumber =  [[${pageNumber}]];
+    var GG = {
+        "kk":function(mm){
+            var articleId = strToInt($('#articleId').val());
+            var articleName = $('#articleName').val().trim();
+            var articleAuthors = $('#articleAuthors').val().trim();
+            window.location.href = getRootPath_dc()+"blogAdmin/article/list?articleId="+articleId+"&articleName="+articleName
+                +"&articleAuthors="+articleAuthors+"&pageNumber="+mm;
+        }
+    };
+    $("#page").initPage(totalCount,pageNumber,GG.kk);
+
+    function search() {
+        var articleId = strToInt($('#articleId').val());
+        var articleName = $('#articleName').val().trim();
+        var articleAuthors = $('#articleAuthors').val().trim();
+        window.location.href = getRootPath_dc() + "blogAdmin/article/list?articleId=" + articleId + "&articleName=" + articleName
+            + "&articleAuthors=" + articleAuthors;
+    }
+
+    //预览
+    function  view(articleId){
+        window.open(getRootPath_dc()+"blog/article/"+articleId,"_blank");
+    }
+
+    //修改
+    function  edit(articleId){
+        window.open(getRootPath_dc()+"blogAdmin/article/saveOrUpdatePage?articleId="+articleId,"_href");
+    }
+
+    //发布
+    function  pulishArticle(articleId){
+        if(confirm('确定发布文章？')){
+            $.ajax({
+                type: 'POST',
+                url: getRootPath_dc() +"blogAdmin/article/updateArticleEnabled",
+                data:
+                    {
+                        articleId:articleId,
+                        enabled:1
+                    },
+                success: function(){
+                    alert('发布成功！');
+                    search();
+                }
+            });
+        }
+    }
+
+    //取消发布
+    function  cancleArticle(articleId){
+        if(confirm('确定取消发布？')){
+            $.ajax({
+                type: 'POST',
+                url: getRootPath_dc() +"blogAdmin/article/updateArticleEnabled",
+                data:
+                    {
+                        articleId:articleId,
+                        enabled:0
+                    },
+                success: function(){
+                    alert('取消发布成功！');
+                    search();
+                }
+            });
+        }
+    }
+
+    //删除文章
+    function  delArticle(articleId){
+        if(confirm('确定删除文章？')){
+            $.ajax({
+                type: 'POST',
+                url: getRootPath_dc() +"blogAdmin/article/deleteArticle",
+                data: {articleId:articleId},
+                success: function(){
+                    alert('删除成功！');
+                    search();
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

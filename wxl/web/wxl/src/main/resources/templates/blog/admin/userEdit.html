@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/admin/header::commonHeader"></head>
+<body>
+<div class="page">
+    <div th:include="blog/admin/mainnavbar::MainNavbar"></div>
+
+    <div class="page-content d-flex align-items-stretch">
+        <div th:include="blog/admin/navigation::navigation"></div>
+
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header">
+                <div class="container-fluid">
+                    <h2 class="no-margin-bottom">用户编辑页</h2>
+                </div>
+            </header>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/blogAdmin/index}">首页</a></li>
+                    <li class="breadcrumb-item active">用户编辑页</li>
+                </ul>
+            </div>
+            <!-- Forms Section-->
+            <section class="forms article-tables article-form">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Form Elements -->
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h3 class="h4">
+                                        <span th:if="${user.userId != 0}">修改 </span>
+                                        <span th:if="${user.userId == 0}">新增 </span>
+                                        用户信息</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form-horizontal" id="user_form">
+
+                                        <div hidden="true">
+                                            <input type="text" class="form-control" th:value="${user.createdUserId}" id="createdUserId" />
+                                            <input type="text" class="form-control" th:value="${user.createdTime}" id="createdTime" />
+                                            <input type="text" class="form-control" th:value="${loginUserId}" id="loginUserId" />
+                                        </div>
+                                        <div class="form-group row">
+
+                                            <label class="col-sm-3 form-control-label">用户名称</label>
+                                            <div class="col-sm-9">
+                                                <input type="text"  name="hidden1" style="display: none"  />
+                                                <input type="text" class="form-control" id="userName" name="userName" th:value="${user.userName}" autocomplete="off" required />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户手机号</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" name="hidden2" style="display: none"  />
+                                                <input type="phone" class="form-control" id="phone" name="phone" th:value="${user.phone}" autocomplete="off" required />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户密码</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" name="hidden3" style="display: none"  />
+                                                <input type="password" class="form-control" id="userPassword" name="userPassword" autocomplete="new-password" th:required="${user.userId == 0}" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户邮箱</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="hidden4" style="display: none"  />
+                                                <input type="email" class="form-control" id="email" name="email" th:value="${user.email}" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">系统用户昵称</label>
+                                            <div class="col-sm-9">
+                                                <input type="text"  name="hidden5" style="display:none"  />
+                                                <input type="text" class="form-control" id="nickName" name="nickName" th:value="${user.nickName}" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户真实姓名</label>
+                                            <div class="col-sm-9">
+                                                <input type="text"  name="hidden6" style="display: none"  />
+                                                <input type="text" class="form-control" id="realName" name="realName" th:value="${user.realName}" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户微信昵称</label>
+                                            <div class="col-sm-9">
+                                                <input type="text"  name="hidden7" style="display: none"  />
+                                                <input type="text" class="form-control" id="wechatNickname" name="wechatNickname" autocomplete="off" th:value="${user.wechatNickname}" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户微信OpenID</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="hidden8" style="display: none"  />
+                                                <input type="text" class="form-control" id="openId" name="openId" autocomplete="off" th:value="${user.openId}" />
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户性别</label>
+                                            <div class="col-sm-9">
+                                                <label class="checkbox-inline" style="margin-right: 20px;">
+                                                    <input type="radio" name="sex" value="1" th:checked="${user.sex==1}" /> 男
+                                                </label>
+                                                <label class="checkbox-inline" style="margin-right: 20px;">
+                                                    <input type="radio" name="sex" value="2" th:checked="${user.sex==2}" /> 女
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="radio" name="sex" value="0" th:checked="${user.sex==0}" /> 保密(未知)
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户状态</label>
+                                            <div class="col-sm-9">
+                                                <select id="userStatus" name="userStatus">
+                                                    <option th:selected="${user.userStatus==0}" value="0">未激活</option>
+                                                    <option th:selected="${user.userStatus==1}" value="1">正常</option>
+                                                    <option th:selected="${user.userStatus==2}" value="2">冻结</option>
+                                                    <option th:selected="${user.userStatus==3}" value="3">禁止登录</option>
+                                                    <option th:selected="${user.userStatus==4}" value="4">黑名单</option>
+                                                    <option th:selected="${user.userStatus==5}" value="5">删除</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">用户角色</label>
+                                            <div class="col-sm-9">
+                                                <select multiple="" class="form-control"  id="roleIdList" name="roleIdList" required>
+                                                    <div  th:each="al,iterStat : ${roleList}">
+                                                        <option th:value="${al.roleId}" th:text="${al.roleName}" th:selected="${al.isHave==1}"></option>
+                                                    </div>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label for="fileInput" class="col-sm-3 form-control-label">上传头像</label>
+                                            <div class="col-sm-9">
+                                                <span id="fileAvatarPreview" th:style="'display:' + @{(${user.userAvatar} ? 'inline-block' : 'none')} + ''"><img width="120" th:if="${user.userAvatar!=null}" th:src="@{'/'+${user.userAvatar}}" /> </span>
+                                                <input id="fileInput" type="file" class="form-control-file" style="margin-bottom: 10px;" />
+                                                <input id="fileInputBtn" class="btn btn-default" type="button" value="上传" onclick="uploadAvatar()" />
+                                                <input id="userAvatar" name="userAvatar" value="" type="hidden" />
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4 offset-sm-3">
+                                                <input type="button" class="btn btn-secondary"  onclick="back()" value="返回列表页" style="margin-right: 30px;" />
+                                                <input type="button" class="btn btn-primary" onclick="saveUser()" value="保存" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div th:include="blog/admin/footer::commonFooter"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="blog/admin/onloadjs::onLoadJs"></div>
+<script type="text/javascript">
+var userId =  [[${user!=null?user.userId:''}]];
+function back(){
+    window.open(getRootPath_dc()+"blogAdmin/user/list","_href");
+}
+
+function saveUser(){
+    if(!$('#user_form').valid()){
+        return false;
+    }
+    var url = getRootPath_dc() + "blogAdmin/user/saveOrUpdate";
+    var userName = $('#userName').val().trim();
+    var userPassword = $('#userPassword').val().trim();
+    var email = $('#email').val().trim();
+    var phone = $('#phone').val().trim();
+    var userStatus = $('#userStatus').val();
+
+    var nickName = $('#nickName').val().trim();
+    var realName = $('#realName').val().trim();
+    var wechatNickname = $('#wechatNickname').val().trim();
+    var openId = $('#openId').val().trim();
+    var sex = $('input[name="sex"]:checked').val();
+
+    var roleIdList = $('#roleIdList').val();
+
+    var createdTime = $('#createdTime').val();
+    var createdUserId = $('#createdUserId').val();
+    var loginUserId = $('#loginUserId').val();
+
+    var userAvatar = $('#userAvatar').val();
+
+
+    if(userId == 0){
+        userId = null;
+    }
+    $.ajax({
+        type : "POST",
+        url : url,
+        dataType : "text",
+        contentType: "application/json;charset=UTF-8",
+        data : JSON.stringify({
+            "userId":userId,
+            "userName": userName,
+            "userPassword": userPassword,
+            "email": email,
+            "phone": phone,
+            "userStatus": userStatus,
+            "nickName": nickName,
+            "realName": realName,
+            "wechatNickname": wechatNickname,
+            "openId": openId,
+            "sex": sex,
+            "createdTime": createdTime,
+            "createdUserId": createdUserId,
+            "roleIdList": roleIdList,
+            "loginUserId":loginUserId,
+            "userAvatar":userAvatar
+        }),
+        success: function (data) {
+            //转义JSON为对象
+            var json = $.parseJSON(data);
+            if (json.status == 200) {
+                alert(json.message);
+                setTimeout(function () {
+                    window.location = json.data;
+                }, 2000);
+            } else {
+                alert("操作失败:" + json.message);
+            }
+        },
+        error:function(){
+            alert("系统出错！");
+        }
+    });
+}
+function uploadAvatar() {
+    var formData = new FormData();
+    formData.append("fileAvatar", $('#fileInput')[0].files[0]);
+    formData.append("userId", userId);
+    formData.append("loginUserId", $('#loginUserId').val());
+    $.ajax({
+        url : getRootPath_dc() + "blogAdmin/user/uploadAvatar",
+        dataType: 'json',
+        type:'POST',
+        async: false,
+        data: formData,
+        processData: false,//使数据不做处理
+        contentType: false,//不要设置Content-Type请求头
+        success: function(data) {
+            console.log(data);
+            if(data.status == 200) {
+                $('#fileAvatarPreview').show();
+                $('#fileAvatarPreview').html('<img width="120" src="'+getRootPath_dc() + data.data +'" />');
+                $('#userAvatar').val(data.data);
+                alert("上传成功！");
+            } else {
+                alert("操作失败:" + data.message);
+            }
+        },
+        error:function(response) {
+            console.log(response);
+            alert("系统出错！");
+        }
+    });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/admin/header::commonHeader"></head>
+<body>
+
+<div class="page login-page">
+    <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+            <div class="row">
+                <!-- Logo & Information Panel-->
+                <div class="col-lg-6">
+                    <div class="info d-flex align-items-center">
+                        <div class="content">
+                            <div class="logo">
+                                <h1>微博客后台登录</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Panel-->
+                <div class="col-lg-6 bg-white">
+                    <div class="form d-flex align-items-center">
+                        <div class="content">
+                            <form th:action="@{/blogAdmin/login}" method="post" class="form-validate">
+                                <h4 th:text="${login_error}" class="text-red"></h4>
+                                <div class="form-group">
+                                    <input type="text"  name="hidden1" style="display: none"  />
+                                    <input id="login-username" type="text" name="username" value="" required data-msg="用户名不能为空" class="input-material" autocomplete="off" />
+                                    <label for="login-username" class="label-material">用户名</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" name="hidden2" style="display: none"  />
+                                    <input id="login-password" type="password" name="password"  value="" required data-msg="密码不能为空" class="input-material" autocomplete="new-password" />
+                                    <label for="login-password" class="label-material">密码</label>
+                                </div><input type="submit" value="登   录" class="btn btn-primary" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyrights text-center">
+        <p>Copyright © 2020. stkit.cn  </p>
+    </div>
+</div>
+
+<div th:replace="blog/admin/onloadjs::onLoadJs"></div>
+</body>
+</html>

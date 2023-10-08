@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/header::commonHeader"></head>
+<body>
+<div th:include="blog/navigation::commonNavigation"></div>
+
+<div id="white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p>
+                    <img th:src="@{/assets/images/blog/user.png}" width="50px" height="50px">
+                    <span th:text="${article.articleAuthors}"></span> </p>
+                <p >
+                    <i class="fa fa-clock-o"></i><a th:text="${article.articleInputDate}"></a>
+                    <i class="fa fa-eye"></i><a th:text="${article.articleReadingTime}"></a>
+                </p>
+                <h4 th:text="${article.articleName}" style="text-align: center;"></h4>
+                <div th:utext="${article.articleShowContent}" style="overflow:hidden" > </div>
+                <p>标签:
+                    <span th:each="al,iterStat : ${article.tagList}">
+                         <i class="fa fa-tag"></i><a  target="_blank" th:href="${'/blog/tag/'+al.tagName}" th:text="${al.tagName}"></a>
+                        </span>
+                </p>
+                <hr>
+                <p><a th:href="@{/blog}"># 返回博客列表</a></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="blog/footer::commonFooter"></div>
+</body>
+</html>

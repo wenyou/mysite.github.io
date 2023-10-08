@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.stkit.wxl.persistence.mapper.UserMapper">
+    <resultMap id="user" type="cn.stkit.wxl.persistence.beans.User">
+        <result property="userId" jdbcType="INTEGER" column="user_id"/>
+        <result property="userName" jdbcType="VARCHAR" column="user_name"/>
+        <result property="nickName" jdbcType="VARCHAR" column="nick_name"/>
+        <result property="realName" jdbcType="VARCHAR" column="real_name"/>
+        <result property="wechatNickname" jdbcType="VARCHAR" column="wechat_nickname"/>
+        <result property="openId" jdbcType="VARCHAR" column="open_id"/>
+        <result property="sex" jdbcType="TINYINT" column="sex"/>
+        <result property="createdTime" jdbcType="INTEGER" column="created_time"/>
+        <result property="createdUserId" jdbcType="INTEGER" column="created_user_id"/>
+        <result property="updatedTime" jdbcType="INTEGER" column="updated_time"/>
+        <result property="updatedUserId" jdbcType="INTEGER" column="updated_user_id"/>
+        <result property="roleId" jdbcType="INTEGER" column="role_id"/>
+        <result property="phone" jdbcType="VARCHAR" column="phone" />
+        <result property="userPassword" jdbcType="VARCHAR" column="user_password" />
+        <result property="userStatus" jdbcType="TINYINT" column="user_status" />
+    </resultMap>
+    <parameterMap id="user" type="cn.stkit.wxl.persistence.beans.User"/>
+
+    <select id="findUserByUserId" parameterType="Integer" resultMap="user">
+        SELECT * FROM user WHERE user_id = #{1} LIMIT 1
+    </select>
+
+    <select id="findUserByPhone" parameterType="String" resultMap="user">
+        SELECT * FROM user WHERE phone = #{1} LIMIT 1
+    </select>
+
+    <select id="findUserByOpenId" parameterType="String" resultMap="user">
+        SELECT * FROM user WHERE open_id = #{1} LIMIT 1
+    </select>
+
+    <!-- 使用alias自定义的parameterType-->
+    <insert id="addUser" parameterType="user">
+        INSERT INTO user (user_name,nick_name,real_name,wechat_nickname,open_id,sex,role_id,phone,user_password,user_status,created_time,created_user_id)
+        VALUES (#{userName},#{nickName},#{realName},#{wechatNickname},#{openId},#{sex},#{roleId},#{phone},#{userPassword},#{userStatus},#{createdTime},#{createdUserId})
+    </insert>
+
+    <update id="updateUserPhoneByUserId" parameterMap="user">
+        UPDATE user SET phone = #{phone}, nick_name = ${nickName}, updated_time = #{updatedTime},updated_user_id = #{updatedUserId}, user_password = #{userPassword}
+        WHERE user_id = #{userId} LIMIT 1
+    </update>
+
+    <update id="updateUserOpenIDByUserId" parameterMap="user">
+        UPDATE user SET wechat_nickname = #{wechatNickname}, open_id = #{openId}, sex = #{sex}, updated_time = #{updatedTime}, updated_user_id = #{updatedUserId} WHERE user_id = #{userId} LIMIT 1
+    </update>
+
+    <update id="updateUserPasswordByUserId" parameterMap="user">
+        UPDATE user SET user_password = #{userPassword} WHERE user_id = #{userId} LIMIT 1
+    </update>
+
+    <delete id="deleteUserByUserId" parameterType="Long">
+        DELETE FROM user WHERE user_id = #{1}
+    </delete>
+
+    <select id="getUserList" resultMap="user">
+        SELECT  * FROM user
+    </select>
+</mapper>
+<!--
+Mybatis之jdbcType, jdbc type对应的java type
+JDBC Type           Java Type
+CHAR                String
+VARCHAR             String
+LONGVARCHAR         String
+NUMERIC             java.math.BigDecimal
+DECIMAL             java.math.BigDecimal
+BIT                 boolean
+BOOLEAN             boolean
+TINYINT             byte
+SMALLINT            short
+INTEGER             INTEGER
+BIGINT              long
+REAL                float
+FLOAT               double
+DOUBLE              double
+BINARY              byte[]
+VARBINARY           byte[]
+LONGVARBINARY       byte[]
+DATE                java.sql.Date
+TIME                java.sql.Time
+TIMESTAMP           java.sql.Timestamp
+CLOB                Clob
+BLOB                Blob
+ARRAY               Array
+DISTINCT            mapping of underlying type
+STRUCT              Struct
+REF                 Ref
+DATALINK            java.net.URL
+-->

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="commonHeader">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="youwenzhang">
+    <title th:text="${title}?${title}+'-'+${blogConfig.blogName}:${blogConfig.blogName}">微博客后台系统</title>
+    <link href="/assets/images/favicon.ico" th:href="@{/assets/images/favicon.ico}" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" th:href="@{/assets/css/blogadmin/bootstrap/css/bootstrap.min.css}">-->
+    <!-- Font Awesome CSS-->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+   <!--<link rel="stylesheet" th:href="@{/assets/css/blog/font-awesome-4.4.0/css/font-awesome.min.css}" href="/assets/css/blog/font-awesome-4.4.0/css/font-awesome.min.css" />-->
+    <link rel="stylesheet" th:href="@{/assets/css/blogadmin/page.css}" href="/assets/css/blogadmin/page.css" />
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" th:href="@{/assets/css/blogadmin/fontastic.css}" href="/assets/css/blogadmin/fontastic.css" />
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" th:href="@{/assets/css/blogadmin/font-googleapis.css}" href="/assets/css/blogadmin/font-googleapis.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" th:href="@{/assets/css/blogadmin/style.default.css}" id="theme-stylesheet" href="/assets/css/blogadmin/style.default.css" />
+    <!--custom stylesheet-->
+    <link rel="stylesheet" th:href="@{/assets/css/blogadmin/mycustom.css}" href="/assets/css/blogadmin/mycustom.css" />
+</head>
+</html>

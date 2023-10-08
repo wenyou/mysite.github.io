@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/admin/header::commonHeader"></head>
+<body>
+<div class="page">
+    <div th:include="blog/admin/mainnavbar::MainNavbar"></div>
+
+    <div class="page-content d-flex align-items-stretch">
+        <div th:include="blog/admin/navigation::navigation"></div>
+
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header" style="margin-bottom:0; padding-bottom:1px;">
+                <div class="container-fluid" style="margin-bottom: 0; padding-bottom: 0;">
+                    <h2 class="no-margin-bottom" style="float: left;">
+                        图片列表页
+                    </h2>
+                    <div style="float: right;">
+                        <button class="btn btn-info" style="padding: 3px;" data-toggle="modal" data-target="#uploadImgModal">上传图片</button>
+                        <button class="btn btn-default" style="padding: 3px;" data-toggle="modal" data-target="#createFolderModal">创建文件夹</button>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </header>
+
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/blogAdmin/index}">首页</a></li>
+                    <li class="breadcrumb-item active">
+                        <a th:href="@{/blogAdmin/resource/imgs/list}">图片列表页</a>
+                        <span th:each="ifolder,iterStat : ${folderArr}">
+                            &nbsp;&nbsp;
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            &nbsp;&nbsp;
+                            <a th:if="${iterStat.first}" th:href="@{'/blogAdmin/resource/imgs/list?folder='+${ifolder}}">[[${ifolder}]]</a>
+                            <a th:if="${iterStat.first==false}" th:href="@{'/blogAdmin/resource/imgs/list?folder='+${folderUriList[iterStat.index-1]}+${ifolder}}">[[${ifolder}]]</a>
+
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <!--content list-->
+            <section class="tables article-tables">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-md-2 col-sm-6" th:each="file,iterStat : ${imageDirectoryList}">
+                            <div class="card">
+                                <img class="card-img-top" th:src="@{/assets/css/blogadmin/img/folder.png}" th:alt="${file.getName()}" />
+                                <div class="card-body" style="text-align: center;">
+                                    <h4 class="card-title imgh4">[[${file.getName()}]]</h4>
+                                    <a th:href="@{'/blogAdmin/resource/imgs/list?folder='+${folder}+${file.getName()}}" class="btn btn-primary btn-small">查看文件夹</a>
+                                    <a href="#" onclick="delImage(this)" th:alt="${file.getName()}" class="btn btn-secondary btn-small">删除</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-sm-6" th:each="file,iterStat : ${imageFileList}">
+                            <div class="card">
+                                <img class="card-img-top" th:src="'/upload/imgs/'+${folder}+${file.getName()}" th:alt="${file.getName()}" />
+                                <div class="card-body">
+                                    <h4 class="card-title imgh4" th:text="${T(cn.stkit.wxl.utils.TimeUtil).getFmtDateTimeFromTimeStamp(file.lastModified(),'dd/MM yy HH:mm')}"></h4>
+                                    <p class="card-text">
+                                        [[${file.getName()}]]
+                                        <a href="#" onclick="delImage(this)" th:alt="${file.getName()}" class="btn btn-secondary btn-small">删除</a>
+                                    </p>
+                                    <textarea style="display: none;" th:id="'idImg'+${iterStat.index}"  th:text="'upload/imgs/'+${folder}+${file.getName()}" ></textarea>
+                                    <a href="#" th:onclick="'copyImgURL('+${iterStat.index}+')'" class="btn btn-info btn-small" style="margin-right:10px;">复制链接</a>
+                                    <a th:href="'/upload/imgs/'+${folder}+${file.getName()}" target="_blank" class="btn btn-primary btn-small">查看大图</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 th:if="${fileSize==0}" style="text-align: center; padding: 30px;">没有图片</h3>
+
+                    </div>
+                </div>
+            </section>
+
+            <div th:include="blog/admin/footer::commonFooter"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="blog/admin/onloadjs::onLoadJs"></div>
+<script type="text/javascript"  th:inline="javascript">
+    function copyImgURL(id) {
+        var Url2 = document.getElementById('idImg'+id);
+        /*Url2.textContent = getRootPath_dc() + Url2.textContent;
+        Url2.select(); // 选择对象
+        document.execCommand("Copy"); // 执行浏览器复制命令
+        alert("已经复制好，可贴粘使用了。");*/
+
+        const input = document.createElement('input');
+        document.body.appendChild(input);
+        input.setAttribute('value', getRootPath_dc() + Url2.textContent);
+        input.select();
+        if (document.execCommand('copy')) {
+            document.execCommand('copy');
+            //console.log('已经复制好，可贴粘使用了。');
+            alert("已经复制好，可贴粘使用了。");
+        }
+        document.body.removeChild(input);
+    }
+    function delImage(imgUri) {
+        var folder = [[${folder}]];
+        var imgName = $(imgUri).attr("alt");
+        if(confirm('您确定删除图片 '+imgName+' 吗？')){
+            $.ajax({
+                type: 'POST',
+                url: getRootPath_dc() +"blogAdmin/resource/imgs/delete",
+                data: {imgName:folder+imgName},
+                success: function(){
+                    alert('删除图片成功！');
+                    if(folder != "") {
+                        folder = folder.substr(0,folder.length-1);
+                    }
+                    window.location.href = getRootPath_dc() + "blogAdmin/resource/imgs/list?folder="+folder;
+                }
+            });
+        }
+    }
+    function uploadImg(frm) {
+        var folder = [[${folder}]];
+
+        var files = $('#imgFile').prop('files');
+        var frmData = new FormData();
+        frmData.append('imgFile', files[0]);
+        frmData.append('imgName', frm.imgName.value);
+        frmData.append('folder', folder);
+
+        $.ajax({
+            type: 'POST',
+            url: getRootPath_dc() +"blogAdmin/resource/imgs/upload",
+            //contentType: "multipart/form-data",
+            data: frmData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(){
+                alert("上传图片成功");
+                $('#uploadImgModal').modal('hide');
+                if(folder != "") {
+                    folder = folder.substr(0,folder.length-1);
+                }
+                window.location.href = getRootPath_dc() + "blogAdmin/resource/imgs/list?folder="+folder;
+            },
+            error: function() {
+                alert("上传图片出错！");
+            }
+        });
+    }
+    function createFolder(frm) {
+        var folder = [[${folder}]];
+
+        $.ajax({
+            type: 'POST',
+            url: getRootPath_dc() +"blogAdmin/resource/imgs/createFolder",
+            data: {folder:folder, folderName:frm.folderName.value},
+            success: function(){
+                alert("创建文件夹成功");
+                $('#createFolderModal').modal('hide');
+                if(folder != "") {
+                    folder = folder.substr(0,folder.length-1);
+                }
+                window.location.href = getRootPath_dc() + "blogAdmin/resource/imgs/list?folder="+folder;
+            },
+            error: function() {
+                alert("创建文件夹出错！");
+            }
+        });
+    }
+</script>
+
+<!-- 模态框（Modal）-上传图片 -->
+<div class="modal fade" id="uploadImgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">
+                    上传图片
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <form role="form" method="post" th:action="@{/blogAdmin/resource/imgs/upload}" enctype="multipart/form-data">
+            <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="imgName">定义图片名称</label>
+                        <input type="text" class="form-control" id="imgName" name="imgName" placeholder="请输入文件名称" />
+                    </div>
+                    <div class="form-group">
+                        <label for="imgFile">选择上传的图片</label>
+                        <input type="file" id="imgFile" name="imgFile" />
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" onclick="uploadImg(this.form)" >
+                    开始上传
+                </button>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal）-创建文件夹 -->
+<div class="modal fade" id="createFolderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">
+                    创建文件夹
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <form role="form" method="post" th:action="@{/blogAdmin/resource/imgs/createFolder}" enctype="application/x-www-form-urlencoded">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="folderName">定义文件夹名称</label>
+                        <input type="text" class="form-control" id="folderName" name="folderName" placeholder="请输入文件夹名称" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="createFolder(this.form)" >
+                        开始创建
+                    </button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+</body>
+</html>

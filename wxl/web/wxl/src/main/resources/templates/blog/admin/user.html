@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/admin/header::commonHeader"></head>
+<body>
+<div class="page">
+    <div th:include="blog/admin/mainnavbar::MainNavbar"></div>
+
+    <div class="page-content d-flex align-items-stretch">
+        <div th:include="blog/admin/navigation::navigation"></div>
+
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header">
+                <div class="container-fluid">
+                    <h2 class="no-margin-bottom">用户列表页</h2>
+                </div>
+            </header>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/index}">首页</a></li>
+                    <li class="breadcrumb-item active">用户列表页</li>
+                </ul>
+            </div>
+            <!--content list-->
+            <section class="tables article-tables">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <div class="card-body form-search-marign">
+                                        <form class="form-inline">
+                                            <div class="form-group form-group-search">
+                                                用户ID：
+                                                <input id="userId" type="text" placeholder="" th:value="${userId}" class="mr-1 form-control width50" />
+                                            </div>
+                                            <div class="form-group form-group-search">
+                                                用户名称：
+                                                <input id="userName" type="text" placeholder="" th:value="${userName}" class="mr-3 form-control" />
+                                            </div>
+                                            <div class="form-group form-group-search">
+                                                手机号：
+                                                <input id="phone" type="text" placeholder="" th:value="${phone}" class="mr-3 form-control" />
+                                            </div>
+                                            <div class="form-group form-group-search">
+                                                微信呢称：
+                                                <input id="wechatNickname" type="text" placeholder="" th:value="${wechatNickname}" class="mr-3 form-control" />
+                                            </div>
+                                            <div class="form-group form-group-search">
+                                                微信openid：
+                                                <input id="openId" type="text" placeholder="" th:value="${openId}" class="mr-3 form-control" />
+                                            </div>
+                                            <div class="form-group form-group-search">
+                                                用户状态：
+                                                <select id="userStatus">
+                                                    <option value="">所有</option>
+                                                    <option th:selected="${userStatus==0}" value="0">未激活</option>
+                                                    <option th:selected="${userStatus==1}" value="1">正常</option>
+                                                    <option th:selected="${userStatus==2}" value="2">冻结</option>
+                                                    <option th:selected="${userStatus==3}" value="3">禁止登录</option>
+                                                    <option th:selected="${userStatus==4}" value="4">黑名单</option>
+                                                    <option th:selected="${userStatus==5}" value="5">删除</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="button" class="btn btn-primary" onclick="search()" value="查询" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="table-thead-bg">
+                                            <tr>
+                                                <th>用户ID</th>
+                                                <th>用户名称</th>
+                                                <th>用户手机号</th>
+                                                <th>微信呢称</th>
+                                                <th>微信openid</th>
+                                                <th>用户状态</th>
+                                                <th>用户角色</th>
+                                                <th>创建时间</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <div  th:each="al,iterStat : ${userList}">
+                                                <tr>
+                                                    <td th:text="${al.userId}"></td>
+                                                    <td th:text="${al.userName}"></td>
+                                                    <td th:text="${al.phone}"></td>
+                                                    <td th:text="${al.wechatNickname}"></td>
+                                                    <td th:text="${al.openId}"></td>
+                                                    <td th:text="${T(cn.stkit.wxl.utils.ThymeleafUtil).getUserStatusText(al.userStatus)}"></td>
+                                                    <td>
+                                                        <span th:each="rl:${al.roleList}">
+                                                            <span th:text="${rl.roleName}" style="margin-right: 5px;"></span>
+                                                        </span>
+                                                    </td>
+                                                    <td th:text="${T(cn.stkit.wxl.utils.TimeUtil).getFmtDateTimeFromTimeStamp(al.createdTime,'dd/MM yy HH:mm')}"></td>
+                                                    <th>
+                                                        <a th:onclick="'javascript:edit('+${al.userId}+');'" href="#" class="edit"> <i class="fa fa-gear"></i>修改</a>
+                                                        <span th:if="${al.userStatus!=1}">
+                                                            <a th:value="${al.userName?:al.userId}" th:onclick="'javascript:pulishUser('+${al.userId}+',this);'" href="#" class="edit"> <i class="fa fa-check"></i>启用</a>
+                                                            <a th:value="${al.userName?:al.userId}" th:onclick="'javascript:deleteUser('+${al.userId}+',this);'" href="#" class="edit"> <i class="fa fa-trash"></i>删除</a>
+                                                        </span>
+                                                        <span th:if="${al.userStatus==1}">
+                                                            <a th:value="${al.userName?:al.userId}" th:onclick="'javascript:cancleUser('+${al.userId}+',this);'" href="#" class="edit"> <i class="fa fa-remove"></i>禁用</a>
+                                                        </span>
+                                                    </th>
+                                                </tr>
+                                            </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <ul class="pages" maxshowpageitem="5" pagelistcount="10"  id="page"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <div th:include="blog/admin/footer::commonFooter"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="blog/admin/onloadjs::onLoadJs"></div>
+<script type="text/javascript"  th:inline="javascript">
+var totalCount =  [[${totalCount}]];
+var pageNumber =  [[${pageNumber}]];
+var GG = {
+    "kk":function(mm){
+        var userId = strToInt($('#userId').val());
+        var userName = $('#userName').val().trim();
+        var phone = $('#phone').val().trim();
+        var wechatNickname = $('#wechatNickname').val().trim();
+        var openId = $('#openId').val().trim();
+        var userStatus = $('#userStatus').val();
+        window.location.href=getRootPath_dc()+"blogAdmin/user/list?userId="+userId+"&userName="+userName+"&phone="+phone+"&wechatNickname="+wechatNickname+"&openId="+openId+"&userStatus="+userStatus +"&pageNumber="+mm;
+    }
+}
+$("#page").initPage(totalCount,pageNumber,GG.kk);
+
+function search() {
+    var userId = strToInt($('#userId').val());
+    var userName = $('#userName').val().trim();
+    var phone = $('#phone').val().trim();
+    var wechatNickname = $('#wechatNickname').val().trim();
+    var openId = $('#openId').val().trim();
+    var userStatus = $('#userStatus').val();
+    window.location.href = getRootPath_dc() + "blogAdmin/user/list?userId=" + userId + "&userName=" + userName +"&phone="+phone+"&wechatNickname="+wechatNickname+"&openId="+openId+"&userStatus="+userStatus;
+}
+//修改
+function  edit(userId){
+    window.open(getRootPath_dc()+"blogAdmin/user/saveOrUpdatePage?userId="+userId,"_href");
+}
+//开启
+function  pulishUser(userId,o){
+    var userName = o.getAttribute("value");
+    if(confirm('您确定开启用户 '+userName+' 登录本系统的功能吗？')){
+        $.ajax({
+            type: 'POST',
+            url: getRootPath_dc() +"blogAdmin/user/updateUserIsEnable",
+            data:
+                {
+                    userId:userId,
+                    isEnable:1
+                },
+            success: function(){
+                alert('启用成功！');
+                search();
+            }
+        });
+    }
+}
+//禁止用户登录
+function  cancleUser(userId,o){
+    var userName = o.getAttribute("value");
+    if(confirm('您确定禁止用户  '+userName+' 登录吗？')){
+        $.ajax({
+            type: 'POST',
+            url: getRootPath_dc() +"blogAdmin/user/updateUserIsEnable",
+            data:
+                {
+                    userId:userId,
+                    isEnable:3
+                },
+            success: function(){
+                alert('禁止用户登录成功！');
+                search();
+            }
+        });
+    }
+}
+//删除用户
+function  deleteUser(userId,o){
+    var userName = o.getAttribute("value");
+    if(confirm('您确定删除用户 '+userName+' 吗？')){
+        $.ajax({
+            type: 'POST',
+            url: getRootPath_dc() +"blogAdmin/user/delete",
+            data: {userId:userId},
+            success: function(){
+                alert('删除用户成功！');
+                search();
+            }
+        });
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="onLoadJs">
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <!--<script type="text/javascript" src="/assets/js/blogadmin/popper.js/umd/popper.min.js" th:src="@{/assets/js/blogadmin/popper.js/umd/popper.min.js}"></script>
+    <script type="text/javascript" src="/assets/js/blogadmin/jquery.cookie/jquery.cookie.js" th:src="@{/assets/js/blogadmin/jquery.cookie/jquery.cookie.js}"></script>
+    <script type="text/javascript" src="/assets/js/blogadmin/Chart.js/Chart.min.js" th:src="@{/assets/js/blogadmin/Chart.js/Chart.min.js}"></script>-->
+    <script type="text/javascript" src="/assets/js/blogadmin/page.js" th:src="@{/assets/js/blogadmin/page.js}"></script>
+    <script type="text/javascript" src="/assets/js/blogadmin/messages_zh.js" th:src="@{/assets/js/blogadmin/messages_zh.js}"></script>
+    <script type="text/javascript" src="/assets/js/blogadmin/front.js" th:src="@{/assets/js/blogadmin/front.js}"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    <script type="text/javascript" src="/assets/js/myutil.js" th:src="@{/assets/js/myutil.js}"></script>
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="https://cdn.bootcdn.net/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript"  th:inline="javascript">
+        function getRootPath_dc() {
+            return window.location.protocol + '//' + window.location.host+"/";
+        }
+    </script>
+</div>
+</body>
+</html>

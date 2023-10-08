@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/admin/header::commonHeader"></head>
+<body>
+<div class="page">
+    <div th:include="blog/admin/mainnavbar::MainNavbar"></div>
+
+    <div class="page-content d-flex align-items-stretch">
+        <div th:include="blog/admin/navigation::navigation"></div>
+
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header">
+                <div class="container-fluid">
+                    <h2 class="no-margin-bottom">友情链接编辑页</h2>
+                </div>
+            </header>
+
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/blogAdmin/index}">首页</a></li>
+                    <li class="breadcrumb-item active">友情链接编辑页</li>
+                </ul>
+            </div>
+
+            <!-- Forms Section-->
+            <section class="forms article-tables article-form">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Form Elements -->
+                        <div class="col-lg-12">
+                            <div class="card">
+
+                                <div class="card-header d-flex align-items-center">
+                                    <h3 class="h4">
+                                        <span th:if="${link.linkId != 0}">修改 </span>
+                                        <span th:if="${link.linkId == 0}">新增 </span>
+                                        友链信息</h3>
+                                </div>
+
+                                <div class="card-body">
+                                    <form class="form-horizontal" id="link_form">
+                                        <div hidden="true">
+                                            <input type="text" class="form-control" th:value="${link.createdUserId}" id="createdUserId" />
+                                            <input type="text" class="form-control" th:value="${link.createdTime}" id="createdTime" />
+                                            <input type="text" class="form-control" th:value="${loginUserId}" id="loginUserId" />
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">友链名称</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="linkName" name="linkName" th:value="${link.linkName}" required />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">友链地址</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="linkUrl" name="linkUrl" th:value="${link.linkUrl}" required />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">友链备注</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="remark" name="remark" th:value="${link.remark}" />
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4 offset-sm-3">
+                                                <input type="button" class="btn btn-secondary" onclick="back()" value="返回列表页" style="margin-right: 30px;" />
+                                                <input type="button" class="btn btn-primary" onclick="saveLink()" value="保存" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div th:include="blog/admin/footer::commonFooter"></div>
+
+        </div>
+    </div>
+</div>
+<div th:replace="blog/admin/onloadjs::onLoadJs"></div>
+<script type="text/javascript">
+var linkId =  [[${link!=null?link.linkId:''}]];
+
+function back(){
+    window.open(getRootPath_dc()+"blogAdmin/link/list","_href");
+}
+
+function saveLink(){
+    if(!$('#link_form').valid()){
+        return false;
+    }
+    var url = getRootPath_dc() + "blogAdmin/link/saveOrUpdate";
+    var linkName = $('#linkName').val().trim();
+    var linkUrl = $('#linkUrl').val().trim();
+    var remark = $('#remark').val();
+
+    var createdUserId = $('#createdUserId').val();
+    var createdTime = $('#createdTime').val();
+    var loginUserId = $('#loginUserId').val();
+
+    if(linkId == 0){
+        linkId = null;
+    }
+    $.ajax({
+        type : "POST",
+        url : url,
+        dataType : "text",
+        contentType: "application/json;charset=UTF-8",
+        data : JSON.stringify({
+            "linkId":linkId,
+            "linkName": linkName,
+            "linkUrl": linkUrl,
+            "remark": remark,
+            "createdUserId": createdUserId,
+            "createdTime": createdTime,
+            "loginUserId": loginUserId
+        }),
+        success: function() {
+            alert("提交成功！");
+        },
+        error:function(){
+            alert("提交失败");
+        }
+    });
+}
+</script>
+</body>
+</html>

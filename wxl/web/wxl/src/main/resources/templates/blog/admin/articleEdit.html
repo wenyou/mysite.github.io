@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/admin/header::commonHeader"></head>
+<body>
+<div class="page">
+    <div th:include="blog/admin/mainnavbar::MainNavbar"></div>
+
+    <div class="page-content d-flex align-items-stretch">
+        <div th:include="blog/admin/navigation::navigation"></div>
+
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header">
+                <div class="container-fluid">
+                    <h2 class="no-margin-bottom">文章编辑页</h2>
+                </div>
+            </header>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{/blogAdmin/index}">首页</a></li>
+                    <li class="breadcrumb-item active">文章编辑页</li>
+                </ul>
+            </div>
+            <!-- Forms Section-->
+            <section class="forms article-tables article-form">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Form Elements -->
+                        <div class="col-lg-12">
+                            <div class="card">
+
+                                <div class="card-header d-flex align-items-center">
+                                    <h3 class="h4">
+                                        <span th:if="${article.articleId != 0}">修改 </span>
+                                        <span th:if="${article.articleId == 0}">新增 </span>
+                                        文章
+                                    </h3>
+                                </div>
+
+                                <div class="card-body">
+                                    <form class="form-horizontal" id="article_form" action="#" onsubmit="return;">
+                                        <div hidden="true">
+                                            <input type="text" class="form-control" th:value="${article.articleReadingTime}" id="articleReadingTime" />
+                                            <input type="text" class="form-control" th:value="${article.enabled}" id="enabled" />
+                                            <input type="text" class="form-control" th:value="${article.createdUserId}" id="createdUserId" />
+                                            <input type="text" class="form-control" th:value="${article.createdTime}" id="createdTime" />
+                                            <input type="text" class="form-control" th:value="${article.articleInputDate}" id="articleInputDate" />
+                                            <input type="text" class="form-control" th:value="${loginUserId}" id="loginUserId" />
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">文章标题</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:value="${article.articleName}" id="articleName" name="articleName" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">文章作者</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:value="${article.articleAuthors}"  id="articleAuthors" name="articleAuthors" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">文章标签</label>
+                                            <div class="col-sm-9">
+                                                <small class="help-block-none">多个标签之间用英文(半角)逗号 , 分割。例如：新闻,生活</small>
+                                                <input type="text" class="form-control" th:value="${article.tagsStr}" id="tagsStr" name="tagsStr" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">是否置顶</label>
+                                            <div class="col-sm-9">
+                                                <label class="checkbox-inline" style="margin-right: 20px;">
+                                                    <input type="radio" name="top" value="1" th:checked="${article.top==1}" /> 是
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="radio" name="top" value="0" th:checked="${article.top==0 || article.articleId==0}" /> 否
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 form-control-label">选择写文章使用的编辑器</label>
+                                            <div class="col-sm-9">
+                                                <label class="checkbox-inline" style="margin-right: 20px;">
+                                                    <input type="radio" name="articleEditor" value="1" th:checked="${article.articleEditor==1}" /> TinyMCE
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="radio" name="articleEditor" value="2" th:checked="${article.articleEditor==0 || article.articleEditor == 2}" /> Markdown
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div id="tinyBox" class="form-group row has-success" th:style="'display:' + @{(${article.articleEditor==1}?'':'none')} + ''">
+                                            <label class="col-sm-3 form-control-label">文章内容</label>
+                                            <div class="col-sm-9">
+                                                <textarea id="tinyTextarea" th:text="${article.articleContent}"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div id="markdownBox" class="form-group row has-success" th:style="'display:' + @{(${article.articleEditor!=1}?'':'none')} + ''">
+                                            <label class="col-sm-3 form-control-label">文章内容</label>
+                                            <div class="col-sm-9">
+                                                <small class="help-block-none">建议使用编辑好的markdown格式直接粘贴</small>
+                                                <textarea class="form-control" id="articleContent" name="articleContent" th:text="${article.articleContent}" required rows="20" onkeyup="compile()"></textarea>
+                                            </div>
+                                        </div>
+                                        <div id="markdownBox-pre" class="form-group row has-success" th:style="'display:' + @{(${article.articleEditor!=1}?'':'none')} + ''">
+                                            <label class="col-sm-3 form-control-label">文章内容预览</label>
+                                            <div class="col-sm-9">
+                                                <div id="result"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4 offset-sm-3">
+                                                <input class="btn btn-secondary" type="button" onclick="back();" value="返回列表页" style="margin-right: 30px;" />
+                                                <input class="btn btn-primary" type="button" onclick="javascript:saveArticle();" value="保存" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div th:include="blog/admin/footer::commonFooter"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="blog/admin/onloadjs::onLoadJs"></div>
+<script type="text/javascript" src="/assets/js/tinymce/tinymce.min.js" th:src="@{/assets/js/tinymce/tinymce.min.js}"></script>
+<!--<script src="https://cdn.tiny.cloud/1/szbkxrmvfmq5fbmyaaj3djz56rinet2dtjujildppu66r7er/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
+<script type="text/javascript">
+$(function(){
+    $('input:radio[name="articleEditor"]').click(function(){
+        var _id = $(this).val();
+        if(_id == 1) {
+            $("#tinyBox").css('display','');
+            $("#markdownBox").css('display','none');
+            $("#markdownBox-pre").css('display','none');
+        } else {
+            $("#tinyBox").css('display','none');
+            $("#markdownBox").css('display','');
+            $("#markdownBox-pre").css('display','');
+        }
+    });
+});
+
+tinymce.init({
+    selector: '#tinyTextarea',
+    language:'zh_CN',
+    //menubar:false,
+    plugins: 'preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template code codesample table charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists wordcount imagetools textpattern help emoticons autosave bdmap indent2em autoresize lineheight axupimgs',//tinydrive
+    toolbar: 'code undo redo | forecolor backcolor bold italic underline strikethrough link image | alignleft aligncenter alignright alignjustify outdent indent | \
+styleselect formatselect fontselect fontsizeselect | bullist numlist | blockquote subscript superscript removeformat | \
+table media charmap emoticons hr insertdatetime anchor preview | fullscreen | bdmap indent2em lineheight insertfile axupimgs',
+    height: 650, //编辑器高度
+    min_height: 400,
+    fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
+    font_formats: '微软雅黑=Microsoft YaHei,Helvetica Neue,PingFang SC,sans-serif;苹果苹方=PingFang SC,Microsoft YaHei,sans-serif;宋体=simsun,serif;仿宋体=FangSong,serif;黑体=SimHei,sans-serif;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;',
+    link_list: [
+        { title: '微博客', value: 'http://blog.stkit.cn/blog' },
+        { title: '系统首页', value: 'http://www.stkit.cn/' }
+    ],
+    /*image_list: [
+        { title: '预置图片1', value: 'https://www.tiny.cloud/images/glyph-tinymce@2x.png' },
+        { title: '预置图片2', value: 'https://www.baidu.com/img/bd_logo1.png' }
+    ],
+    image_class_list: [
+        { title: 'None', value: '' },
+        { title: 'Some class', value: 'class-name' }
+    ],
+    importcss_append: true,
+    //自定义文件选择器的回调内容
+    file_picker_callback: function (callback, value, meta) {
+        if (meta.filetype === 'file') {
+            callback('https://www.baidu.com/img/bd_logo1.png', { text: 'My text' });
+        }
+        if (meta.filetype === 'image') {
+            callback('https://www.baidu.com/img/bd_logo1.png', { alt: 'My alt text' });
+        }
+        if (meta.filetype === 'media') {
+            callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.baidu.com/img/bd_logo1.png' });
+        }
+    },
+    autosave_ask_before_unload: false,*/
+    /*baidu map 额外参数*/
+    bdmap_width:200,
+    bdmap_height:200,
+    /*insertfile*/
+    //tinydrive_upload_path: '/upload/file',
+
+    //图片上传
+    //images_upload_url:getRootPath_dc() + "blogAdmin/upload/singleImage",
+    //images_upload_base_path: getRootPath_dc() +'upload/imgs/',
+    relative_urls: false,//设置插入图片时返回文件全路径
+    remove_script_host: false,//设置插入图片时返回文件全路径
+    axupimgs_filetype:'.png,.gif,.jpg,.jpeg',
+    /*自定义前端上传逻辑*/
+    images_upload_handler: function (blobInfo, succFun, failFun) {
+        var xhr, formData;
+        var file = blobInfo.blob();//转化为易于理解的file对象
+        xhr = new XMLHttpRequest();
+        xhr.withCredentials = false;
+        xhr.open('POST', getRootPath_dc() + "blogAdmin/upload/singleImage");
+        xhr.onload = function() {
+            var json;
+            if (xhr.status != 200) {
+                failFun('HTTP Error: ' + xhr.status);
+                return;
+            }
+            json = JSON.parse(xhr.responseText);
+            if (!json || typeof json.location != 'string') {
+                failFun('Invalid JSON: ' + xhr.responseText);
+                return;
+            }
+            succFun(getRootPath_dc() +'upload/imgs/'+json.location);
+            //succFun(json.location);
+        };
+        formData = new FormData();
+        formData.append('file', file, file.name );
+        xhr.send(formData);
+    }
+
+});
+
+var articleId =  [[${article!=null?article.articleId:''}]];
+if(articleId != 0){
+    compile();
+}
+function compile(){
+    var text = $("#articleContent").val();
+    var converter = new showdown.Converter();
+    var html = converter.makeHtml(text);
+    $("#result").html(html);
+}
+
+function back(){
+    window.open(getRootPath_dc()+"blogAdmin/article/list","_href");
+}
+
+function saveArticle(){
+    tinyMCE.editors['tinyTextarea'].save();
+    if(!$('#article_form').valid()){
+        return false;
+    }
+    var url = getRootPath_dc() + "blogAdmin/article/saveOrUpdate";
+    var articleName = $('#articleName').val().trim();
+    var articleAuthors = $('#articleAuthors').val().trim();
+    var tagsStr = $('#tagsStr').val().trim();
+    var top = $('input[name="top"]:checked').val();
+    var articleContent = $('#articleContent').val();
+    var articleEditor = $('input[name="articleEditor"]:checked').val();
+    if(articleEditor == 1) {
+        articleContent = $('#tinyTextarea').val();
+        //articleContent = tinyMCE.editors['tinyTextarea'].getContent();
+    }
+    var articleReadingTime = $('#articleReadingTime').val();
+    var enabled = $('#enabled').val();
+
+    var createdUserId = $('#createdUserId').val();
+    var articleInputDate = $('#articleInputDate').val();
+    var createdTime = $('#createdTime').val();
+    var loginUserId = $('#loginUserId').val();
+
+    if(articleId == 0){
+        articleId = null;
+    }
+    $.ajax({
+        type : "POST",
+        url : url,
+        dataType : "text",
+        contentType: "application/json;charset=UTF-8",
+        data : JSON.stringify({
+            "articleId":articleId,
+            "articleName": articleName,
+            "articleAuthors": articleAuthors,
+            "tagsStr": tagsStr,
+            "top": top,
+            "articleContent":articleContent,
+            "articleEditor":articleEditor,
+            "articleReadingTime":articleReadingTime,
+            "enabled":enabled,
+            "createdUserId":createdUserId,
+            "createdTime":createdTime,
+            "articleInputDate":articleInputDate,
+            "loginUserId": loginUserId
+        }),
+        success: function(data) {
+            //转义JSON为对象
+            var json = $.parseJSON(data);
+            if (json.status == 200) {
+                alert(json.message);
+                setTimeout(function () {
+                    window.location = getRootPath_dc()+"blogAdmin/article/saveOrUpdatePage?articleId="+json.data;
+                }, 2000);
+            } else {
+                alert("操作失败:" + json.message);
+            }
+        },
+        error:function(){
+            alert("提交出错！");
+        }
+    });
+    return false;
+}
+</script>
+</body>
+</html>

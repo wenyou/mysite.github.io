@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:replace="header::header-fragment"></header>
+<body ontouchstart data-weui-theme="light">
+
+<div class="page">
+    <div class="weui-form">
+        <div class="weui-form__text-area">
+            <h2 class="weui-form__title" th:text="${title}">我要留言</h2>
+            <!--<div class="weui-form__desc">输入更多内容的输入区域样式展示</div>-->
+        </div>
+        <div class="weui-form__control-area">
+            <div class="weui-cells__group weui-cells__group_form">
+                <div class="weui-cells__title">问题描述</div>
+                <div class="weui-cells weui-cells_form">
+                    <div class="weui-cell ">
+                        <div class="weui-cell__bd">
+                            <input name="openid" id="openid" th:value="${openid}" size="50" />
+                            <textarea class="weui-textarea" placeholder="请输入您的意见，我们钭为你不断改进，谢谢！" rows="3"></textarea>
+                            <div class="weui-textarea-counter"><span>0</span>/200</div>
+                            <textarea th:text="${token}" class="weui-textarea" rows="3"></textarea>
+                            <textarea th:text="${userinfo}" class="weui-textarea" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-form__opr-area">
+            <a class="weui-btn weui-btn_primary wxl_fb_weui-btn" href="javascript:" id="showTooltips"> 提交 </a>
+        </div>
+    </div>
+    <div class="page__bd page__bd_spacing fb_tips_box">
+        <div class="icon-box wxl_icon-box">
+            <i class="weui-icon-info weui-icon_msg wxl_weui-icon-info"></i>
+            <div class="icon-box__ctn wxl_icon-box__ctn">
+                <h3 class="icon-box__title">咨询电话</h3>
+                <p class="icon-box__desc">0551-611111111</p>
+            </div>
+        </div>
+        <div class="icon-box wxl_icon-box">
+            <i class="weui-icon-info weui-icon_msg wxl_weui-icon-info"></i>
+            <div class="icon-box__ctn wxl_icon-box__ctn">
+                <h3 class="icon-box__title">咨询时间</h3>
+                <p class="icon-box__desc">工作日时间</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="footer::footer-fragment"></footer>
+</body>
+</html>

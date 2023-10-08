@@ -1,0 +1,59 @@
+
+### mysql连接信息 20121225XDM
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/wxldb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+
+#设置上传文件大小
+#解决问题：org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededException: The field file exceeds its maximum permitted size of 1048576 bytes.
+  servlet:
+    multipart:
+      #设置单个文件大小
+      max-file-size: 5MB
+      #设置单次请求文件的总大小
+      max-request-size: 5MB
+
+  thymeleaf:
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    check-template-location: true
+    ##禁用thymeleaf缓存
+    cache: false
+    servlet:
+      content-type: text/html
+
+#JPA配置
+##none 启动时不做任何操作，update 启动时更新，create 启动时会根据实体类，重新在数据中创建表，造成原有数据丢失。
+  jpa:
+    hibernate:
+      ddl-auto: none
+##控制台打印sql
+    show-sql: true
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  check-config-location: true
+  config-location: classpath:mybatis/mybatis-config.xml
+  #springboot配置mybatis打印sql
+  #方式一：配置打印sql
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#springboot配置mybatis打印sql
+#方式二：配置打印sql
+logging:
+  level:
+    cn.stkit.wxl.persistence.mapper: DEBUG
+
+
+#设置session的有效时长 7200s，2小时
+server:
+  session:
+    timeout: 7200
+

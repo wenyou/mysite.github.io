@@ -1,0 +1,72 @@
+/* .container,.page { position: absolute;top: 0;right: 0;bottom: 0;left: 0; } */
+.pd_2{padding-bottom: 2px;}
+.pd_10{padding-bottom: 10px;}
+.pt_10{padding-top: 10px;}
+.mt_0{margin-top: 0px;}
+
+.divline{height: 10px;background: #f4f4f4;}
+
+.slide{ height:240px; }
+.weui-footer{padding-top: 10px;}
+.weui-tabbar-flex{ position: fixed; }
+
+.placeholder {margin: 5px;padding: 0 10px;background-color: #ebebeb;height: 2.3em;line-height: 2.3em;text-align: center;color: #cfcfcf;}
+
+/* 头部 */
+.head-con{border-bottom: 1px #eee solid;position: fixed;top:0;left: 0;right:0;z-index: 400;background: #fff;}
+.head-con .placeholder{background: transparent;color: #333;}
+.head-con .weui-flex__item_left .placeholder{text-align: left;}
+.head-con .weui-flex__item_right .placeholder{text-align: right;}
+
+.mine-top{text-align: center;padding: 34px 10px;background: url(../images/user_bg.jpg);color: #fff;}
+.mine-top .weui-avatar-circle{margin: 0 auto;margin-bottom: 5px;width: 65px;height: 65px;}
+.mine-top .weui-avatar-circle img{width: 65px;height: 65px;}
+
+.fitment-plate{padding-left: 10px;padding-right: 10px;}
+.fitment-plate .weui-flex__item{margin: 8px;text-align: center;}
+.fitment-plate .weui-flex__item img{border-radius: 100%;}
+.fitment-plate .weui-flex__item .text{padding-top: 5px;}
+
+/* 购物车 */
+.page-cart-list-title{margin-top: 0;}
+.page-cart-list-content{margin-top: 0;}
+.page-cart-list-content .weui-media-box_appmsg{padding: 10px 10px 0 10px;}
+.page-cart-list-content .weui-media-box_appmsg .weui-cells{margin-top: 0;}
+.page-cart-list-content .weui-media-box_appmsg .weui-cells:before,
+.page-cart-list-content .weui-media-box_appmsg .weui-cells:after{display: none;}
+.page-cart-list-content .weui-media-box_appmsg .weui-cells .weui-cell{padding: 10px 0;}
+
+.page-cart-list-content .weui-check__label{padding: 0;}
+.page-cart-list-content .weui-check__label:active{background-color: transparent;}
+
+.cart-nav{position: fixed;bottom:0;left:0;right:0;height: 55px;background: #fff;z-index: 2;border-top: 1px #eee solid;}
+.cart-nav .weui-cells_checkbox{margin-top: 0;float: left;}
+.cart-nav .right{float: right;display: flex;line-height: 55px;}
+.cart-nav .right .weui-btn{margin: 0 0 0 5px;border-radius: 0;line-height: 55px;}
+
+/* 我的钱包 */
+.wallet-top{text-align: center;padding: 34px 10px;background: url(../images/user_bg.jpg);color: #fff;}
+.wallet-top span{display: block;}
+.wallet-top span.content{font-size: 34px;padding-top: 10px;}
+
+.wallet-put-cash .weui-cells{margin-top: 0;}
+
+.wallet-put-cash-list .weui-btn{position: fixed;bottom:0;left:0;right:0;border-radius: 0;}
+
+/* 待结算 */
+.time-sele{background: #f4f4f4;padding: 10px 15px;}
+.time-sele .time-sele-input input{width: 140px;}
+.time-sele .time-sele-info{font-size: 12px;color: #9d9d9d;}
+
+/* 产品详情 */
+.product-detail-info .price-box{padding-top: 10px;}
+.product-detail-info .price-box em{font-style: normal;}
+.product-detail-info .price-box .price{font-weight: bold;color: #f00;font-size: 18px;}
+
+.product-detail-content{text-align: center;font-size: 12px;}
+.product-detail-content .title{padding: 10px 0;}
+.product-detail-content .content{min-height: 400px;background: #f4f4f4;}
+
+.product-nav{position: fixed;bottom:0;left:0;right:0;height: 55px;background: #fff;}
+.product-nav .weui-btn{height: 55px;line-height: 55px;border-radius: 0;}
+

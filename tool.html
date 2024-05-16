@@ -6,13 +6,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 <title>常用工具</title>
 <style type="text/css">
-    li a{margin-right:10px;}
+    :root {
+        --light-green-opacity: rgba(203, 221, 135, .75);
+        --relume-library-lite--rl-white: white;
+
+        --white-green: #e1e9d6;
+        --white-green-opacity: rgba(225, 233, 214, .4);
+
+        --blue\<deleted\|variable-e7543cc9\>: #542ff7;
+        --opacity-white: rgba(255, 255, 255, .33);
+        --relume-library-lite--rl-black: black;
+
+        --light-green: #cadd88;
+        --darkest-text: #073d42;
+        --dark-text: #1d4c50;
+    }
+    body{
+        background-color:#f6f5f3;
+        padding: 0;
+        margin: 0;
+
+        min-height: 100%;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .header,.tools_wrapper{padding: 0 10px;margin: 0;}
+    .header h1{
+        color: var(--darkest-text);
+        font-family: Graphik, sans-serif;
+        font-weight: 500;
+        line-height: 1.2;
+        font-size: 2.75rem;
+    }
+    li a{
+        margin-right:10px;
+        opacity: 1;
+        color: var(--dark-text);
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 400;
+        text-decoration: none;
+        transition: all .24s;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    .footer{
+        text-align: center; 
+        color: #fff;
+        background-color: #044044;
+        background-image: linear-gradient(rgba(0, 0, 0, 0) 60%, #074146);
+        padding-top: 20px;
+        padding-bottom:30px;
+        position: relative;
+        margin: 0;
+    }
+    .footer a.icp{
+        color: var(--white-green-opacity);
+        -webkit-text-stroke-width: 0px;
+        -webkit-text-stroke-color: rgba(203, 221, 135, .75);
+        margin-top: 31px;
+        margin-bottom: 31px;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 150%;
+        text-decoration:none;
+    }
+    a:hover{
+        text-decoration:underline;
+    }
+    a:active{
+        text-decoration:underline;
+    }
+    .tools_wrapper .tools_title h3{
+        font-family: Graphik, sans-serif;
+        color: #1d4c50;
+        font-size: 1.15rem;
+        font-weight: 500;
+        line-height: 90%;
+  
+        background-color: var(--light-green-opacity);
+        /*color: var(--relume-library-lite--rl-white);*/
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+
+        width:160px;
+        padding: 10px 10px 5px 10px;
+        margin: 0;
+    }
+    .tools_wrapper .tools_title{
+        margin: 0; padding:0;
+        border-bottom: 1px solid var(--white-green);
+    }
+    .tools_wrapper li{
+        padding: 5px;
+    }
+    /*https://elicit.com/careers*/
 </style>
 </head>
 <body>
-<h1>过尽千帆皆不是，斜晖脉脉水悠悠。</h1>
+<div class="header">
+    <h1>过尽千帆皆不是，斜晖脉脉水悠悠。</h1>
+</div>
+
 <div class="tools_wrapper">
-    <h3>AI 工具</h3>
+    <div class="tools_title"><h3>AI 工具</h3></div>
     <ol>
         <li><a href="https://chat.openai.com/">ChatGPT</a></li>
         <li><a href="https://yige.baidu.com/">文心一格（AI做图）</a></li>
@@ -20,7 +117,7 @@
         <li><a href="https://ai-bot.cn/">AI工具集</a></li>
         <li><a href="https://www.wolframalpha.com/">Wolfram|Alpha: Computational Intelligence，计算</a></li>
     </ol>
-    <h3>前端</h3>
+    <div class="tools_title"><h3>前端</h3></div>
     <ol>
         <li>
             <a href="http://css.doyoe.com/">CSS参考手册</a>  |  <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">mozilla CSS</a>  |   <a href="https://www.w3school.com.cn/css/index.asp">w3school CSS</a>  |   <a href="https://www.w3schools.com/">w3schools.com: W3CSchool（Learn to Code）</a>
@@ -42,7 +139,7 @@
         </li>
         <li>
             <a href="https://v3.cn.vuejs.org/">Vue3.0 中文文档</a> &nbsp;&nbsp;
-            <a href="https://vue3js.cn/docs/zh/"> 国内加速版</a>   &nbsp;&nbsp;&nbsp;&nbsp; | 
+            <a href="https://vue3js.cn/docs/zh/"> 国内加速版</a> &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;
             <a href="https://vue3js.cn/start/">Vue 3.0 源码学习</a>
         </li>
         <li>
@@ -63,8 +160,12 @@
         <li>
             <a href="./color.html">基础色</a> | <a href="./Chinese-traditional-colors.html">我收集的中国传统色</a> | <a href="https://www.color-hex.com/">Color Hex Color Codes(调色)</a>  |  <a href="https://colors.ichuantong.cn/">中国传统颜色手册</a>  |    <a href="https://encycolorpedia.cn/">Encycolorpedia(颜色代码表、图表及调色板)</a>
         </li>
+        <li>
+            <a href="https://www.hyperui.dev/">HyperUI (Free Open Source Tailwind CSS Components)</a>  |    
+            <a href="https://tailwindcss.com/">Tailwind CSS</a>  |  <a href="https://tailwind.nodejs.cn/">tailwind.nodejs.cn</a>
+        </li>
     </ol>
-    <h3>Java</h3>
+    <div class="tools_title"><h3>Java</h3></div>
     <ol>
         <li><a href="https://www.runoob.com/java/java-collections.html">JAVA教程 java知识查询 API查询</a></li>
         <li><a href="https://www.runoob.com/manual/jdk11api/index.html">JDK 11 在线中文手册</a></li>
@@ -77,32 +178,41 @@
             <a href="https://docs.scala-lang.org/api/all.html">SCALA API DOCS</a>   |   <a href="https://www.scala-lang.org/api/2.11.12/#package">SCALA API DOCS(2.11.12)</a>   |   <a href="https://www.scala-lang.org/api/2.10.7/#package">SCALA API DOCS(2.10.7)</a>
         </li>
     </ol>
-    <h3>PHP</h3>
+    <div class="tools_title"><h3>PHP</h3></div>
     <ol>
         <li>
             <a href="https://front-line-php.com/cheat-sheet">现代 PHP 速查表</a>
         </li>
     </ol>
-    <h3>Python</h3>
+    <div class="tools_title"><h3>Python</h3></div>
     <ol>
         <li>
             <a href="./images/Python3CheatSheet.jpg">Python速查表 Python 3 Cheat Sheet</a>
         </li>
     </ol>
-    <h3>C</h3>
+    <div class="tools_title"><h3>C</h3></div>
     <ol>
         <li><a href="https://legacy.cplusplus.com/">C库函数查询手册  cplusplus.com</a></li>
         <li><a href="https://en.cppreference.com/w/">C&C++ reference   C&C++参考手册</a></li>
         <li><a href="https://wangdoc.com/clang/">C 语言教程</a></li>
+        <li><a href="https://majorli.github.io/algo_guide/index.html">C++算法编程指南</a></li>
     </ol>
-    <h3>Linux</h3>
+    <div class="tools_title"><h3>Linux</h3></div>
     <ol>
         <li>
             <a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html">Linux工具快速教程</a>
         </li>
     </ol>
-    <h3>在线小工具</h3>
+    <div class="tools_title"><h3>English</h3></div>
     <ol>
+        <li>
+            <a href="https://app.ludwig.guru/">Ludwig（英语句子搜索引擎）</a>
+        </li>
+        <li><a href="https://linggle.com/">Linggle（英文寫作、閱讀、辭典）</a></li>
+    </ol>
+    <div class="tools_title"><h3>在线小工具</h3></div>
+    <ol>
+        <li><a href="https://mathsolver.microsoft.com/zh">Math Solver(数学求解器)</a></li>
         <li>
             <a href="http://tool.oschina.net/encrypt">在线加密解密</a>
         </li>
@@ -112,7 +222,7 @@
         <li><a href="https://www.tldraw.com/">whiteboard 白板程序</a>   | <a href="https://excalidraw.com/"> Excalidraw</a></li>
         <li><a href="https://www.canva.com/">canva.com 在线设计：网页、海报、PPT、视频、文档、各种图... , 使用国际版</a></li>
     </ol>
-    <h3>常用查询</h3>
+    <div class="tools_title"><h3>常用查询</h3></div>
     <ol>
         <li><a href="https://www.gov.cn/govweb/guoqing/">中国概况</a></li>
         <li><a href="https://www.zgbk.com/">中国大百科全书</a></li>
@@ -127,13 +237,13 @@
         <li><a href="https://github.com/krahets/hello-algo">Hello 算法 github</a>  | <a href="https://www.hello-algo.com/">Hello 算法 www.hello-algo.com</a></li>
     </ol>
     <!--
-    <h3>书单</h3>
+    <div class="tools_title"><h3>书单</h3></div>
     <ol>
         <li><a href="http://blog.hahafamily.com:81/2019/05/31/%e4%bd%99%e7%a7%8b%e9%9b%a8%e6%8e%a8%e8%8d%90%e7%9a%8450%e9%a6%96%e5%bf%85%e8%af%bb%e5%94%90%e8%af%97/">余秋雨推荐的50首必读唐诗</a></li>
         <li><a href="http://www.xiaowangzi.org/index.html">小王子</a></li>
     </ol>
     -->
-    <h3>考证</h3>
+    <div class="tools_title"><h3>考证</h3></div>
     <ol>
         <li>
             <a href="https://www.ruankao.org.cn/">软考</a>
@@ -141,18 +251,14 @@
         <li><a href="http://www.apta.gov.cn/">安徽省人事考试网</a></li>
     </ol>
 </div>
-<style>
-.tools_wrapper h3{
-    color:#333;
-    /*font-size:4vw;*/
-    font-size: 16px;
-    border-bottom: 1px solid #eee;
-}
-.tools_wrapper li{
-    font-size:12px;
-    padding: 5px;
-}
-</style>
-<div style="text-align: center; font-size: 12px; color: #888888;"><a href="https://beian.miit.gov.cn" style="font-size: 12px; color: #888888;">皖ICP备17010158号-1</a></div>
+
+<div class="footer">
+    <a href="https://beian.miit.gov.cn" class="icp">皖ICP备17010158号-1</a>
+    <div style="display: none;">
+        <li>辈分：玉孝志广恒，春好永国兴，家泰民安乐，德深道义博</li>
+        <li>爷爷奶奶：章春南、李?英</li>
+        <li>姥爷姥姥：袁??、黄??</li>
+    </div>
+</div>
 </body>
 </html>

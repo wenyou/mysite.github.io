@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+</head>
+<body>
+<h1>Test</h1>
+<script>
+  function timestampToString(timestamp) {
+    //把时间戳转换为日期格式
+    var date = new Date(timestamp);
+    var Y = date.getFullYear() + '-';	
+    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    var D = date.getDate() + ' ';
+    var h = date.getHours() + ':';
+    var m = date.getMinutes() + ':' + date.getSeconds();
+    return Y+M+D+h+m;
+  }
+  console.log(new Date().getTime())
+  console.log(timestampToString(new Date().getTime()));
+  var timestamp = 1718157834765 - 1000 * 60 * 60 * 24;
+  console.log(timestampToString(timestamp));
+
+
+  function convertTimestampToDate(timestamp) {
+    // 确保传入的timestamp是毫秒级的
+    var date = new Date(timestamp);
+    
+    // 使用toLocaleString方法获取本地化的日期和时间字符串
+    var localizedDate = date.toLocaleString();
+    console.log('localizedDate:', localizedDate);
+    
+    // 使用toISOString方法获取ISO格式的日期和时间字符串
+    var isoDate = date.toISOString();
+    console.log('date.toISOString():', isoDate);
+}
+console.log('convertTimestampToDate:', convertTimestampToDate(timestamp));
+</script>
+</body>
+</html>
